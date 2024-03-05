@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,11 @@ public class CrudRestController {
 	@Autowired
 	private CrudService service;
 	 
+	@GetMapping("/")
+	public String entrypage(){ 
+		
+			return "<h1>Welcome to SpringBoot App</h1>";
+	}
 	
 	@GetMapping("/getProd")
 	public List<Product> fetchProductList(){ 
@@ -41,6 +47,13 @@ public class CrudRestController {
 	
 	@PostMapping("/addProd")
 	public Product saveProductList(@RequestBody Product product){ 
+		
+		return service.saveProductToBD(product);
+		
+	}
+	
+	@PutMapping("/updateProd")
+	public Product saveorUpdateProductList(@RequestBody Product product){ 
 		
 		return service.saveProductToBD(product);
 		

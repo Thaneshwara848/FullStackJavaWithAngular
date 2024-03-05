@@ -18,19 +18,21 @@ public class CrudService {
 	public List<Product> fetchProductList(){
 		
 		return repo.findAll();
+		// seelct * from product;
 	
 	}
 	
     public Optional<Product> fetchProductListById(int id){
 		
 		return repo.findById(id);
+		// select * from product where id = ? 
 	
 	}
 	
 	public Product  saveProductToBD(Product product)
 	{
 		return repo.save(product);
-		
+//		insert into prodctu value(?,?,?,?);
 	}
 	
 	 public String  deleteProductListById(int id){
@@ -42,12 +44,8 @@ public class CrudService {
 				// TODO Auto-generated catch block
 				result="Not Deleted";
 			}
+//			 delete from productr where id = ? 
 		
 			 return result;
-		}
-	
-	
-	
-	
-	
+		}	
 }
